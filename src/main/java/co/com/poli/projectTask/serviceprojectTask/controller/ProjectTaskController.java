@@ -29,6 +29,15 @@ public class ProjectTaskController {
         this.projectTaskService = projectTaskService;
     }
 
+    @GetMapping(value = "/{idTask}")
+    public  ResponseEntity<ProjectTask>getProjectTask(@PathVariable("idTask") Long id){
+        ProjectTask projectTask = projectTaskService.getProjectTaskById(id);
+        if(projectTask == null){
+            return  ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(projectTask);
+    }
+
     @GetMapping(value = "/project/{projectidentifier}")
     public ResponseEntity<List<ProjectTask>> listProjectTaskByProject(@PathVariable("projectidentifier")
                                                                                   String projectIdentifier){
