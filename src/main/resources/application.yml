@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: service-projectTask
+server:
+  port: 9082
