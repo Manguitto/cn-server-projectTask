@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,15 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
         ProjectTask projectTask = projectTaskRepository.findByProjectIdentifier(projectIdentifier);
         if (projectTask != null) {
             return projectTask;
+        }
+        return null;
+    }
+
+    @Override
+    public ProjectTask getProjectTaskById(Long id) {
+        Optional<ProjectTask> projectTask = projectTaskRepository.findById(id);
+        if(projectTask.isPresent()){
+            return  projectTask.get();
         }
         return null;
     }

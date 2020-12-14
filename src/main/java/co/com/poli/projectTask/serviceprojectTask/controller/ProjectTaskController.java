@@ -78,6 +78,14 @@ public class ProjectTaskController {
     public  ResponseEntity <ProjectTask> deleteProjectTask(@PathVariable("idTask") Long id,
                                                            @PathVariable("projectidentifier") String projectIdentifier){
         log.info("Fetching & Deleting Invoice with id {}", id);
+        ProjectTask projectTaskID = projectTaskService.getProjectTaskById(id);
+        if(projectTaskID == null){
+            log.error("Unable to delete. ProjectTask with id {} not found.", id);
+            return  ResponseEntity.notFound().build();
+        }
+        ProjectTask projectTask = projectTaskService.deleteProjectTask(id, projectIdentifier);
+        return ResponseEntity.ok(projectTask);
+
     }
 
     private String formatMessage( BindingResult result){

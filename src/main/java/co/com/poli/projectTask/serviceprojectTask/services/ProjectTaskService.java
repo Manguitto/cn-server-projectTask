@@ -9,6 +9,7 @@ public interface ProjectTaskService {
     ProjectTask deleteProjectTask(Long idTask, String projectIdentifier);
     ProjectTask getProjectTaskByName(String name);
     ProjectTask getProjectTaskByIdentifier(String projectIdentifier);
+    ProjectTask getProjectTaskById(Long id);
     List<ProjectTask> getProjectTaskByProject(String projectI);
     Double getHoursProject (String projectI);
     Double getHoursProjectByStatus (String projectI, String status);
